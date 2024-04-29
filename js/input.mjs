@@ -2,57 +2,48 @@
 
 export function Input() {
     let action = null // Initialized with a default value
-    const callbacks = []
+
+
+    init()
 
     function init() {
         listenForKeys()
         listenForPointer()
     }
 
-    function notify(newAction) {
-        if (action !== newAction) {
-            action = newAction
-            // console.log("action changed")
-            callbacks.forEach(callback => {
-                if (typeof callback === 'function') {
-                    // console.log(callback)
-                    callback(action)
-                } else {
-                    throw new Error('Callback is not a function')
-                }
-            })
-        }
-    }
-
-    function subscribe(callback) {
-        if (typeof callback !== 'function') {
-            throw new Error('Subscribe requires a function as a callback')
-        }
-        callbacks.push(callback)
-        console.log(callbacks)
-    }
-
-    const keydownHandler = (event) => {
-        let currentAction = processKeys(event)
-        // console.log(action)
-        notify(currentAction)
-    }
-
-    const pointerdownHandler = (event) => {
-        let currentAction = processPointer(event)
-        // console.log(action)
-        notify(currentAction)
-    }
-
+    // adding an event listenr to listen for when keys are pressed,
+    // sending the event to the processKeys() function
     function listenForKeys() {
-        document.addEventListener("keydown", keydownHandler)
+        document.addEventListener("keydown", keydownHandler())
     }
 
+    function keydownHandler() {
+        return (event) => {
+            let currentAction = processKeys(event)
+            console.log(currentAction)
+            return currentAction
+        }
+    }
+
+    // adding a pointer listener to listen for when pointer events occur,
+    // sending the event to the pointerHandler() function
     function listenForPointer() {
-        document.addEventListener("pointerdown", pointerdownHandler)
+        document.addEventListener("pointerdown", pointerDownHandler(processPointer))
     }
 
+    function pointerDownHandler(processPointer) {
+        return (event) => {
+            let currentAction = processPointer(event)
+            console.log(currentAction)
+            return currentAction
+        }
+    }
+
+    // handles event from the listenForKeys function,
+    // converts keypresses into string values representing
+    // actions in the game
     function processKeys(event) {
+        // console.log("processKeys")
         switch (event.code) {
             case "Space":
             case "ArrowUp":
@@ -76,6 +67,10 @@ export function Input() {
         }
     }
 
+
+    // handles event from the listenForPointer function,
+    // converts keypresses into string values representing
+    // actions in the game
     function processPointer(event) {
         if (event.button !== 0) return
 
@@ -102,7 +97,8 @@ export function Input() {
 
     return {
         getAction,
-        subscribe,
         destroy
     }
 }
+
+
