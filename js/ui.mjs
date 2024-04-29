@@ -1,39 +1,38 @@
+// ui.js
 "use strict"
 
-export function createUI() {
+// Creates UI, returns object with public methods: show, hide and showUI
+// (hideUI is called by showUI)
+export function UI() {
 
     let elements = []
 
-    // function initState(state) {
-    //     const elements = document.querySelectorAll(`[data-gamestate~="${state}"]`)
-    //     console.log(elements)
-    //     elements.forEach((element) => {
-    //         console.log(element)
-    //         hide(element)
-    //     })
-    // }
-
+    // public: set element to show by setting visibility and display properties
     function showElement(element) {
         element.style.visibility = "show"
         element.style.display = "block"
     }
 
+    // public: set element to hide by setting visibility and display properties
     function hideElement(element) {
         element.style.visibility = "hidden"
         element.style.display = "none"
     }
 
+    // public: Shows UI by state argument passed to function, 
+    // first calls hideUI() to hide all elements that do *not* have that state
     function showUI(state) {
         hideUI(state)
         const elements = document.querySelectorAll(`[data-gamestate~="${state}"]`)
-        console.log(elements)
         elements.forEach((element) => {
-            console.log(element)
             showElement(element)
         })
 
     }
 
+    // private: Hides UI elements that do not have the state passed
+    // viu the argument by iterating over all data-gamestate elements
+    // and filtering 
     function hideUI(state) {
         // select all elements that have the data-gamestate attribute
         const allElements = document.querySelectorAll('[data-gamestate]')
@@ -42,13 +41,13 @@ export function createUI() {
             const gameStates = element.getAttribute('data-gamestate').split(' ')
             return !gameStates.includes(state)
         })
-        console.log(filteredElements)
 
         filteredElements.forEach((element) => {
             hideElement(element)
         })
     }
 
+    // 
     return {
         show: showElement,
         hide: hideElement,

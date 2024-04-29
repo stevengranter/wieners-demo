@@ -175,10 +175,6 @@ img {
   display: flex;
 }
 
-.block {
-  /* display: block; */
-}
-
 .green-bg {
   background-color: var(--clr-green);
 }
@@ -680,7 +676,7 @@ button {
 }
 
 #shop-screen {
-  background-image: url("../images/bg-shop-01.webp");
+  background-image: url("../images/shop/bg-shop-01.webp");
   background-size: cover;
   height: 100%;
 }
