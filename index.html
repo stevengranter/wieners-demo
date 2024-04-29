@@ -41,11 +41,11 @@
          
         <div
           id="game-screen__hud-overlay"
-          class="overlay hidden"
+          class="overlay"
           data-ui="true"
           data-gamestate="play"
         >
-          <div id="debug-panel" class="hidden">
+          <div id="debug-panel">
             <div id="debug-player-dx">player.dx = <span></span></div>
             <div id="debug-player-speedX">player.speedX = <span></span></div>
             <div id="debug-player-speedY">player.speedY = <span></span></div>
@@ -55,7 +55,7 @@
             <div class="hud-left">
               <div id="hud-player-stats">
                 <div id="hud-lives" class="pixelated">
-                  <img src="./images/nan-portrait-pixel-01.png" alt="" />
+                  <img src="./images/hud/nan-portrait-pixel-01.png" alt="" />
                   <div id="lives"></div>
                 </div>
                 <div id="hud-health-meter">
@@ -192,7 +192,7 @@
             </div>
             <div id="excited-chicken" data-ui="true">
               <img  
-                src="./images/wiener-chicken-01.png"
+                src="./images/scene/wiener-chicken-01.png"
                 alt="an excited chicken"
               />
             </div>
@@ -219,7 +219,7 @@
             </div>
             <div id="excited-chicken" data-ui="true">
               <img
-                src="./images/wiener-chicken-01.png"
+                src="./images/scene/wiener-chicken-01.png"
                 alt="an excited chicken"
               />
             </div>
@@ -256,11 +256,11 @@
           display="block"
         >
          
-         <div id="intro-screen" data-ui="true" data-gamestate="intro" class="hidden">
+         <div id="intro-screen" data-ui="true" data-gamestate="intro">
             <div>
               <img
                 id="popup-nan"
-                src="./images/nan-portrait-3d.webp"
+                src="./images/intro/nan-portrait-3d.webp"
                 alt=""
                 data-ui="true"
                 class="character-portrait"
@@ -297,13 +297,13 @@
           <div
             id="popup-screen"
             data-ui="true"
-            class="hidden"
+          
             data-gamestate="popup"
           >
             <div>
               <img
                 id="popup-tibbo"
-                src="./images/mr-tibbo-portrait-3d.webp"
+                src="./images/shop/mr-tibbo-portrait-3d.webp"
                 alt=""
                 data-ui="true"
                 class="character-portrait"
@@ -331,7 +331,7 @@
           <div
             id="shop-screen"
             data-ui="true"
-            class="hidden"
+          
             data-gamestate="cutscene"
           >
             <div
@@ -411,7 +411,7 @@
         />
       </div>
       <!-- </div> -->
-    </div>
+      <script type="module" src="./script.js"></script>
   </body>
-  <script type="module" src="./js/main.js"></script>
+  
 </html>
