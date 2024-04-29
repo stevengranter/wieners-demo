@@ -13,6 +13,8 @@ export function GameWorld(canvasElementId, width, height, uiInstance, inputInsta
     let ui = uiInstance
     let input = inputInstance
 
+    // Initialize the canvas, set the width and height from
+    // arguments passed when invoking the GameWorld function
     function init(canvasElementId, width, height) {
         const canvas = document.getElementById(canvasElementId)
         console.log()
@@ -21,6 +23,8 @@ export function GameWorld(canvasElementId, width, height, uiInstance, inputInsta
         return canvas
     }
 
+    // return the canvasElement, context, ui and input as
+    // as public properties
     return {
         // Use shorthand canvas and ctx 
         canvas: canvasElement,
