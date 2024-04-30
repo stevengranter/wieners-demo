@@ -1,3 +1,6 @@
+"use strict"
+// Configuration object for the gull sprite.
+// This is passed to the Sprite function (sprite.mjs) to create the sprite
 export const gullConfig = {
     id: "gull",
     imageURL: "/images/sprites/sprite-seagull_flying_west.png",

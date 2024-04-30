@@ -20,10 +20,12 @@ export function Layer(layerConfig, backgroundSprite = null, player = null) {
 
         let newLayer = {}
         newLayer.config = { ...layerConfig }
-        newLayer.sprite = await Sprite(layerConfig)
+        if (newLayer.config.imageURL)
+            newLayer.sprite = await Sprite(layerConfig)
+        console.log(newLayer)
         return newLayer
 
-        // console.log(newLayer)
+
 
 
     }

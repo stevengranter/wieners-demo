@@ -23,6 +23,7 @@ export async function Sprite(configObject) {
     }
 
     // END Guard Clauses
+
     // Declare a const newSprite object
     // store the current config under a config property
     //  and spread configObject props into it on the first level
@@ -30,7 +31,7 @@ export async function Sprite(configObject) {
 
     newSprite = { ...configObject }
     newSprite.config = { ...configObject }
-    console.log(newSprite)
+    // console.log(newSprite)
 
     // Creates and loads a spritesheet using the preloadImage() utility function, 
     // .then waits for the Promise to resolve,
@@ -65,7 +66,7 @@ export async function Sprite(configObject) {
 
     // If the defaults property of newSprite contains location/velocity arrays,
     // copy these to the first level of the object as these values will change
-    // frequently (only if not alreadestY set)
+    // frequently (only if not already set)
     // Keep the defaults property in case sprite needs to be reset
     // Set newSprite's location and velocity (or to defaults if none are provided)
     if (location !== undefined) {

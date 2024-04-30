@@ -1,8 +1,10 @@
 "use strict"
 
+// public module function: Input handler for any input provided by the player
+// Sets up event lis
 export function Input() {
-    let action = null // Initialized with a default value
 
+    let action = null // Initialized with a default value
 
     init()
 
@@ -11,35 +13,43 @@ export function Input() {
         listenForPointer()
     }
 
-    // adding an event listenr to listen for when keys are pressed,
-    // sending the event to the processKeys() function
+    // private function: listenForKeys adds an event listener 
+    // to listen for when keys are pressed from a "keydown" event
+    // and sends the event to the keyDownHandler() function
     function listenForKeys() {
         document.addEventListener("keydown", keydownHandler())
     }
 
+    // private function: keydownHandler is called from the 
+    //eventlistener on a "keydown" browser event
     function keydownHandler() {
         return (event) => {
             let currentAction = processKeys(event)
             console.log(currentAction)
+            action = currentAction
             return currentAction
         }
     }
 
-    // adding a pointer listener to listen for when pointer events occur,
-    // sending the event to the pointerHandler() function
+    // private function: listenForPointer adds an event listener 
+    // to listen for when pointer are pressed from a "pointerdown" event
+    // and sends the event to the pointerdownHandler() function
     function listenForPointer() {
-        document.addEventListener("pointerdown", pointerDownHandler(processPointer))
+        document.addEventListener("pointerdown", pointerdownHandler(processPointer))
     }
 
-    function pointerDownHandler(processPointer) {
+    // private function: pointerdownHandler is called from the 
+    //eventlistener on a "pointerdown" browser event
+    function pointerdownHandler(processPointer) {
         return (event) => {
             let currentAction = processPointer(event)
             console.log(currentAction)
+            action = currentAction
             return currentAction
         }
     }
 
-    // handles event from the listenForKeys function,
+    // handles event from the keydownHandler function,
     // converts keypresses into string values representing
     // actions in the game
     function processKeys(event) {
@@ -67,9 +77,8 @@ export function Input() {
         }
     }
 
-
-    // handles event from the listenForPointer function,
-    // converts keypresses into string values representing
+    // handles event from the pointerdownHandler function,
+    // converts pointer events into string values representing
     // actions in the game
     function processPointer(event) {
         if (event.button !== 0) return
@@ -93,7 +102,6 @@ export function Input() {
         document.removeEventListener("keydown", keydownHandler)
         document.removeEventListener("pointerdown", pointerdownHandler)
     }
-
 
     return {
         getAction,

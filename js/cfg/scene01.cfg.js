@@ -23,7 +23,7 @@ export const getScene01Layer_BackgroundConfig = () => {
     }
 }
 
-const getScene01Layer_SpriteConfig = () => {
+export const getScene01Layer_SpriteConfig = () => {
     return {
         // spriteSrc: "./images/garden-06.png",
         eventTimeline: [
@@ -67,7 +67,7 @@ const getScene01Layer_SpriteConfig = () => {
 
 const getScene01Layer_ForegroundConfig = () => {
     return {
-        spriteSrc: "./images/garden-06-foreground.webp",
+        spriteSrc: "./images/scene01-foreground.webp",
         animationFrame: {},
         animations: {},
         location: { dx: 0, dy: 0 },
@@ -84,7 +84,7 @@ const getScene01Layer_ForegroundConfig = () => {
 
 const scene01Layer_Background = Layer(getScene01Layer_BackgroundConfig())
 
-console.log(scene01Layer_Background)
+// console.log(scene01Layer_Background)
 const scene01Layer_Sprite = Layer(getScene01Layer_SpriteConfig())
 const scene01Layer_Foreground = Layer(getScene01Layer_ForegroundConfig())
 

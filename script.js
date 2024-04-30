@@ -8,7 +8,7 @@ import { Layer } from "./js/layer.mjs"
 
 
 import { gullConfig } from "./js/cfg/gull.cfg.js"
-import { getScene01Layer_BackgroundConfig } from "./js/cfg/scene01.cfg.js"
+import { getScene01Layer_BackgroundConfig, getScene01Layer_SpriteConfig } from "./js/cfg/scene01.cfg.js"
 
 const ui = UI()
 const input = Input()
@@ -20,8 +20,10 @@ const game = GameWorld("game-screen-canvas", 475, 270, ui, input)
 //     console.log(input.getAction())
 // }
 
-const scene01Background = Layer(getScene01Layer_BackgroundConfig())
-
+const scene01BackgroundLayer = Layer(getScene01Layer_BackgroundConfig())
+const scene01SpriteLayer = Layer(getScene01Layer_SpriteConfig())
 ui.showUI("title")
+
+
 
 // setInterval(logAction, 1000)
